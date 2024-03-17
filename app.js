@@ -18,5 +18,12 @@ app.use(express.static('public'))
 app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
-    res.render('index')
+    res.render('temp')
 })
+
+
+
+// 404 page, only runs if none of the other functions run
+app.use((req, res) => {
+    res.status(404).render('404', {title: '404'})
+});
