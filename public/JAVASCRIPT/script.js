@@ -10,11 +10,7 @@ add_message_to_screen('You connected')
 socket.on('chat_message', data => {
     // if username = 'bob', message = 'hello
     // sends 'bob: hello'
-
-    const time = new Date();
-    const formattedTime = time.toLocaleString("en-US", { hour: "numeric", minute: "numeric" , second: "numeric"});
-
-   add_message_to_screen(`${data.user_name}: ${data.message}  (${formattedTime})`)
+   add_message_to_screen(`${data.user_name}: ${data.message}`)
 })
 
 //when new user joins chat message
@@ -40,10 +36,7 @@ message_form.addEventListener('submit', e => {
     message_input.value = ''
 
     //add message to screen
-    const time = new Date();
-    const formattedTime = time.toLocaleString("en-US", { hour: "numeric", minute: "numeric" , second: "numeric"});
-
-    add_message_to_screen(`You: ${message}  (${formattedTime})`)
+    add_message_to_screen(`You: ${message}`)
 
 
 })
@@ -51,8 +44,11 @@ message_form.addEventListener('submit', e => {
 
 // add message to html
 function add_message_to_screen(message) {
+    const time = new Date();
+    const formattedTime = time.toLocaleString("en-US", { hour: "numeric", minute: "numeric" , second: "numeric"});
+
     const Element = document.createElement('div')
     //add the message to div
-    Element.innerText = message
+    Element.innerText = message + `  (${formattedTime})`
     message_form.append(Element)
 }
