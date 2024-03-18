@@ -21,7 +21,13 @@ app.get('/', (req, res) => {
     res.render('index', {title: 'Home'})
 })
 
+app.get('/about', (req, res) => {
+    res.render('about', {title: 'About'})
+})
 
+app.get('/chat', (req, res) => {
+    res.render('chat', {title: 'Chat'})
+})
 
 // 404 page, only runs if none of the other functions run
 app.use((req, res) => {
