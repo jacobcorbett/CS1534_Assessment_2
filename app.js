@@ -35,7 +35,11 @@ function add_user_name_to_database(user_name) {
 const new_user_test = new User({
              user_name: user_name,
             })
-            new_user_test.save()  
+            new_user_test.save() 
+            // currently crashes if username = null 
+            .catch((err) => {
+                console.log(err)
+            })
 }
 
 function add_message_to_database(username, message) {
@@ -44,6 +48,10 @@ function add_message_to_database(username, message) {
         body: message
     })
     new_message_to_add.save()
+    // currently crashes if you send empty string
+    .catch((err) => {
+                console.log(err)
+            })
 }
 
 
@@ -62,11 +70,16 @@ app.use(morgan('dev'));
 
 //testing socket
 io.on('connection', socket => {
+    console.log(users)
 
     //when socket recives 'new_user'
     socket.on('new_user', user_name =>{
         console.log('new user:', user_name)
-        //add_user_name_to_database(user_name)
+
+        // save username to database
+        add_user_name_to_database(user_name)
+
+        //add username to array
         users[socket.id] = user_name
         socket.broadcast.emit('user_connected', user_name);
 
@@ -75,6 +88,10 @@ io.on('connection', socket => {
     //when socket recives 'send_chat_message', then emit that message to everyone other than the one who sent it
     socket.on('send_chat_message', message => {
         socket.broadcast.emit('chat_message', {message: message, user_name: users[socket.id]});
+        
+        //save message to databaase
+        add_message_to_database(users[socket.id], message)
+        
     })
 
     //when socket recives 'disconnect'
