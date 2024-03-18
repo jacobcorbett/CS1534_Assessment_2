@@ -11,7 +11,7 @@ const app = express();
 
 //connect to database
 // if connection successful run app on port 3000
-const dbURI = 'mongodb+srv://mightymander:tNiaZ3th0YjzJuW4@chatdb.blkcylv.mongodb.net/?retryWrites=true&w=majority&appName=chatDB';
+const dbURI = 'mongodb+srv://mightymander:tNiaZ3th0YjzJuW4@chatdb.blkcylv.mongodb.net/development_database?retryWrites=true&w=majority&appName=chatDB';
 console.log('Attempting Connection to db...')
 mongoose.connect(dbURI)
     .then((result) => console.log('Successfully connected to database'))
@@ -38,6 +38,15 @@ const new_user_test = new User({
             new_user_test.save()  
 }
 
+function add_message_to_database(username, message) {
+    const new_message_to_add = new Chat ({
+        user: username,
+        body: message
+    })
+    new_message_to_add.save()
+}
+
+
 
 // register view engine
 app.set('view engine', 'ejs');
@@ -57,14 +66,25 @@ io.on('connection', socket => {
     //when socket recives 'new_user'
     socket.on('new_user', user_name =>{
         console.log('new user:', user_name)
-        add_user_name_to_database(user_name)
+        //add_user_name_to_database(user_name)
+        users[socket.id] = user_name
+        socket.broadcast.emit('user_connected', user_name);
 
     })
 
     //when socket recives 'send_chat_message', then emit that message to everyone other than the one who sent it
     socket.on('send_chat_message', message => {
-        socket.broadcast.emit('chat-message', message);
+        socket.broadcast.emit('chat_message', {message: message, user_name: users[socket.id]});
     })
+
+    //when socket recives 'disconnect'
+    socket.on('disconnect', () => {
+        socket.broadcast.emit('user_disconnected', users[socket.id]);
+        
+        // remove user from array when user leaves
+        delete users[socket.io]
+    })
+
 })
 
 
