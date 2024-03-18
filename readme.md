@@ -6,3 +6,12 @@
 - set up basic layout for project, views, public
 
 - added in partials to make all the pages easier to edit all at once
+
+18/3/24
+
+- attempted to connect to database and read data
+
+- used mongoose packge for interacting with mongodb to make it simplier 
+
+- set up a model for the database, just has user and body
+
