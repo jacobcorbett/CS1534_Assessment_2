@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const mongoose = require('mongoose')
 
 //express app
 const app = express();
@@ -17,14 +18,18 @@ app.use(express.static('public'))
 // 3rd party module for logging
 app.use(morgan('dev'));
 
+
+// if user attempts to go to root page, render index page
 app.get('/', (req, res) => {
     res.render('index', {title: 'Home'})
 })
 
+// if user attempts to go to about page, render about page
 app.get('/about', (req, res) => {
     res.render('about', {title: 'About'})
 })
 
+// if user attempts to go to chat page, render chat page
 app.get('/chat', (req, res) => {
     res.render('chat', {title: 'Chat'})
 })
