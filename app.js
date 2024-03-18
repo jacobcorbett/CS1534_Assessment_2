@@ -96,7 +96,7 @@ io.on('connection', socket => {
 
     //when socket recives 'disconnect'
     socket.on('disconnect', () => {
-        console.log('user disconnected:', user_name)
+        console.log('user disconnected:', users[socket.id])
         socket.broadcast.emit('user_disconnected', users[socket.id]);
         
         // remove user from array when user leaves
