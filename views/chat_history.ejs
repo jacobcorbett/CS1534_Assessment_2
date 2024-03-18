@@ -12,6 +12,18 @@
 
             <h1>Welcome Chat Page</h1>
 
+            <!--  temp commented out
+            <% if (chats.length> 0) {%>
+                <% chats.forEach(chat=> { %>
+
+            <%=String(chat.createdAt).substring(16, 24) %>
+                <%=chat.user %>: <%= chat.body %>
+                        </p>
+                        <% })%>
+                            <% } else {%>
+                                <p>No chats to display</p>
+                                <% }%>
+                                    -->
 
 
             <div id="message-container">

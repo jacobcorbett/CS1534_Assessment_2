@@ -15,9 +15,10 @@ const dbURI = 'mongodb+srv://mightymander:tNiaZ3th0YjzJuW4@chatdb.blkcylv.mongod
 console.log('Attempting Connection to db...')
 mongoose.connect(dbURI)
     .then((result) => console.log('Successfully connected to database'))
-    .then((result) => app.listen(3000))
     .catch((err) => console.log(err));
 
+//start main website on port 3000
+app.listen(3000)
 
 // temp for adding data to database
 // const test1 = new User({
@@ -70,7 +71,6 @@ app.use(morgan('dev'));
 
 //testing socket
 io.on('connection', socket => {
-    console.log(users)
 
     //when socket recives 'new_user'
     socket.on('new_user', user_name =>{
@@ -121,14 +121,14 @@ app.get('/about', (req, res) => {
 
 // if user attempts to go to chat page, render chat page
 app.get('/chat', (req, res) => {
-    
-    Chat.find()
-    .then((result) => {
-        res.render('chat' , {title: 'All Blogs', chats: result})
-    })
-    .catch((err) => {
-        console.log(err);
-    })
+    res.render('chat', {title: 'chat'})
+    // Chat.find()
+    // .then((result) => {
+    //     res.render('chat' , {title: 'All Blogs', chats: result})
+    // })
+    // .catch((err) => {
+    //     console.log(err);
+    // })
     
 })
 
