@@ -2,6 +2,9 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose')
 const Chat = require('./models/chat')
+const User = require('./models/user')
+const io = require('socket.io')(5000)
+const users = {}
 
 //express app
 const app = express();
@@ -16,12 +19,25 @@ mongoose.connect(dbURI)
     .catch((err) => console.log(err));
 
 
-// // temp for adding data to database
+// temp for adding data to database
+// const test1 = new User({
+//   user_name: 'poppy',
+// })
+// test1.save()  
+
 // const test = new Chat({
-//   user: 'mark',
-//   body: 'test chat 2'
+//   chat: 'poppy',
+//   body: 'poop'
 // })
 // test.save()  
+
+function add_user_name_to_database(user_name) {
+const new_user_test = new User({
+             user_name: user_name,
+            })
+            new_user_test.save()  
+}
+
 
 // register view engine
 app.set('view engine', 'ejs');
@@ -33,6 +49,26 @@ app.use(express.static('public'))
 
 // 3rd party module for logging
 app.use(morgan('dev'));
+
+
+//testing socket
+io.on('connection', socket => {
+
+    //when socket recives 'new_user'
+    socket.on('new_user', user_name =>{
+        console.log('new user:', user_name)
+        add_user_name_to_database(user_name)
+
+    })
+
+    //when socket recives 'send_chat_message', then emit that message to everyone other than the one who sent it
+    socket.on('send_chat_message', message => {
+        socket.broadcast.emit('chat-message', message);
+    })
+})
+
+
+
 
 
 // if user attempts to go to root page, render index page

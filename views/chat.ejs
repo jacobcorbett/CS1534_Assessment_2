@@ -3,6 +3,8 @@
 
 <!-- Get Head from partial file -->
 <%- include("./partials/head.ejs") %>
+    <script defer src="http://localhost:5000/socket.io/socket.io.js"></script>
+    <script defer src="/JAVASCRIPT/script.js"></script>
 
     <body>
 
@@ -10,7 +12,27 @@
 
             <h1>Welcome Chat Page</h1>
 
-            <%=chats %>
+            <!--  temp commented out
+            <% if (chats.length> 0) {%>
+                <% chats.forEach(chat=> { %>
+
+            <%=String(chat.createdAt).substring(16, 24) %>
+                <%=chat.user %>: <%= chat.body %>
+                        </p>
+                        <% })%>
+                            <% } else {%>
+                                <p>No chats to display</p>
+                                <% }%>
+                                    -->
+
+
+            <div id="message-container">
+                <form id="send-container">
+                    <input type="text" id="message-input-data">
+                    <button type="submit" id="send-button">Send</button>
+                </form>
+            </div>
+
     </body>
 
 </html>
