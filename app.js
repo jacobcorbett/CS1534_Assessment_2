@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose')
 const Chat = require('./models/chat')
 const User = require('./models/user')
-const io = require('socket.io')(5000)
+const io = require('socket.io')(5678) //starts socket on port 5678
 const users = {}
 
 //express app

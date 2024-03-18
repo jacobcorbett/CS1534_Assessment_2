@@ -1,6 +1,8 @@
-const socket = io('http://localhost:5000', { transports : ['websocket'] });
-const message_form = document.getElementById('send-container')
-const message_input = document.getElementById('message-input-data')
+// had to add transports, or the socket wouldnt work and nothing was sending
+const socket = io('http://localhost:5678', { transports : ['websocket'] });
+const message_form = document.getElementById('send_container')
+const message_input = document.getElementById('message_input_data')
+let num_of_messages = 0
 
 const user_name = prompt('Enter your username: ')
 socket.emit('new_user', user_name)
@@ -43,12 +45,19 @@ message_form.addEventListener('submit', e => {
 
 
 // add message to html
+
+
 function add_message_to_screen(message) {
+    
+    //adapted the code from sample code
     const time = new Date();
     const formattedTime = time.toLocaleString("en-US", { hour: "numeric", minute: "numeric" , second: "numeric"});
 
     const Element = document.createElement('div')
     //add the message to div
     Element.innerText = message + `  (${formattedTime})`
+    Element.id = `chat_num_${num_of_messages}`
+    Element.className = 'chat_message_div'
     message_form.append(Element)
+    num_of_messages += 1;
 }
