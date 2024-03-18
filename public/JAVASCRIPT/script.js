@@ -1,4 +1,8 @@
 // had to add transports, or the socket wouldnt work and nothing was sending
+
+// un comment for codio
+//const socket = io('https://strangeanimal-bakercave-5678.codio-box.uk/', { transports : ['websocket'] });
+
 const socket = io('http://localhost:5678', { transports : ['websocket'] });
 const message_form = document.getElementById('send_container')
 const message_input = document.getElementById('message_input_data')
