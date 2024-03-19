@@ -10,7 +10,6 @@ const message_input = document.getElementById('message_input_data')
 const active_users_container = document.getElementById('active_users_div')
 let num_of_messages = 0
 
-
 const user_name = prompt('Enter your username: ')
 socket.emit('new_user', user_name)
 add_message_to_screen('You connected')
@@ -57,8 +56,7 @@ message_form.addEventListener('submit', e => {
 
 })
 
-
-
+// adds username to active users div
 function add_user_to_active_users(username) {
     const Element = document.createElement('div')
     Element.innerText = username
@@ -66,7 +64,7 @@ function add_user_to_active_users(username) {
 
     active_users_container.append(Element)
 }
-
+// adds removes username from active users div
 function remove_user_from_active_users(username) {
     const elementToRemove = document.getElementById(username);
     if (elementToRemove) {
@@ -96,8 +94,4 @@ function add_message_to_screen(message) {
 function auto_scroll() {
     const element = document.getElementById('message_container');
     element.scrollTop = element.scrollHeight;
-}
-
-function randomInteger(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
