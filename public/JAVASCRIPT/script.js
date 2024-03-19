@@ -10,6 +10,7 @@ const message_input = document.getElementById('message_input_data')
 const active_users_container = document.getElementById('active_users_div')
 let num_of_messages = 0
 
+
 const user_name = prompt('Enter your username: ')
 socket.emit('new_user', user_name)
 add_message_to_screen('You connected')
@@ -32,7 +33,12 @@ socket.on('user_connected', user_name => {
 socket.on('user_disconnected', user_name => {
     // using `` allows for f-strings like python
    add_message_to_screen(`${user_name} disconnected`)
+   remove_user_from_active_users(user_name)
+
+   
+
 })
+
 
 //run when submit button clicked
 message_form.addEventListener('submit', e => {
@@ -56,8 +62,16 @@ message_form.addEventListener('submit', e => {
 function add_user_to_active_users(username) {
     const Element = document.createElement('div')
     Element.innerText = username
+    Element.id = username
 
     active_users_container.append(Element)
+}
+
+function remove_user_from_active_users(username) {
+    const elementToRemove = document.getElementById(username);
+    if (elementToRemove) {
+    active_users_container.removeChild(elementToRemove);
+    }
 }
 
 // add message to html
@@ -75,10 +89,15 @@ function add_message_to_screen(message) {
     message_container.append(Element)
     num_of_messages += 1;
     auto_scroll();
+   
 }
 
 // this function auto scrolls the page down
 function auto_scroll() {
     const element = document.getElementById('message_container');
     element.scrollTop = element.scrollHeight;
+}
+
+function randomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }

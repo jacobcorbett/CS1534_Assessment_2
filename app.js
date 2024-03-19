@@ -82,7 +82,7 @@ io.on('connection', socket => {
         //add username to array
         users[socket.id] = user_name
         socket.broadcast.emit('user_connected', user_name);
-
+        
     })
 
     //when socket recives 'send_chat_message', then emit that message to everyone other than the one who sent it
