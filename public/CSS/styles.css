@@ -6,7 +6,9 @@
 }
 
 /* start of chat page */
-
+#active_users_div {
+    background-color: red;
+}
 
 /* this is the message box and submit button form*/
 /* makes all the messaages only take up 75% of screen height*/
