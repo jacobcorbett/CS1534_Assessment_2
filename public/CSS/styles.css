@@ -4,3 +4,23 @@
     border-style: solid;
     margin-top: 10px;
 }
+
+/* start of chat page */
+
+
+/* this is the message box and submit button form*/
+/* makes all the messaages only take up 75% of screen height*/
+#message_container {
+    max-height: 75vh;
+    overflow: auto;
+    
+}
+
+/* makes sending message form, centre and margin from bottom*/
+#send_container{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+/* end of of chat page */

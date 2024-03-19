@@ -5,6 +5,7 @@
 
 const socket = io('http://localhost:5678', { transports : ['websocket'] });
 const message_form = document.getElementById('send_container')
+const message_container = document.getElementById('message_container')
 const message_input = document.getElementById('message_input_data')
 let num_of_messages = 0
 
@@ -49,8 +50,6 @@ message_form.addEventListener('submit', e => {
 
 
 // add message to html
-
-
 function add_message_to_screen(message) {
     
     //adapted the code from sample code
@@ -62,6 +61,13 @@ function add_message_to_screen(message) {
     Element.innerText = message + `  (${formattedTime})`
     Element.id = `chat_num_${num_of_messages}`
     Element.className = 'chat_message_div'
-    message_form.append(Element)
+    message_container.append(Element)
     num_of_messages += 1;
+    auto_scroll();
+}
+
+// this function auto scrolls the page down
+function auto_scroll() {
+    const element = document.getElementById('message_container');
+    element.scrollTop = element.scrollHeight;
 }
