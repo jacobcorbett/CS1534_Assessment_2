@@ -17,8 +17,8 @@ mongoose.connect(dbURI)
     .then((result) => console.log('Successfully connected to database'))
     .catch((err) => console.log(err));
 
-//start main website on port 3000
-app.listen(3000)
+//start main website on port 80
+app.listen(80)
 
 // temp for adding data to database
 // const test1 = new User({
@@ -89,7 +89,6 @@ io.on('connection', socket => {
     socket.on('send_chat_message', message => {
         socket.broadcast.emit('chat_message', {message: message, user_name: users[socket.id]});
         
-        console.log('user:' + users[socket.id] + ' --> ' + message)
         //save message to databaase
         add_message_to_database(users[socket.id], message)
         
