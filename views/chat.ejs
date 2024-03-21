@@ -11,18 +11,38 @@
     <script defer src="http://localhost:5678/socket.io/socket.io.js"></script>
     <script defer src="/JAVASCRIPT/script.js"></script>
 
+    <style>
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+
     <body>
 
         <%- include("./partials/nav.ejs") %>
 
-            <h1>Welcome Chat Page</h1>
+
 
             <div class="row">
-                <div id="active_users_div" class="col-4">
-                    <h2>active users</h2>
+
+
+
+                <div id="active_users_div" class="col-lg-2">
+                    <h2><span id="active_users_toggle">Active users</span></h2>
+                    <div id="active_users_list">
+                        <!-- List of active users goes here -->
+
+                    </div>
+
                 </div>
 
-                <div id="message_container" class="col-8">
+                <div id="message_container" class="col-lg-10">
                     <form id="send_container" class="fixed-bottom">
                         <input type="text" id="message_input_data">
                         <button type="submit" id="send_button">Send</button>

@@ -114,7 +114,52 @@ border-bottom: 2px solid blue;
     margin-top: 10px;
 }
 #active_users_div {
-    background-color: red;
+    border-right: solid;
+    overflow: hidden;
+  
+}
+#active_users_div h2, p{
+    text-align: center;
+  
+}
+#active_users_div span{
+    border-bottom: 2px solid blue;
+  
+}
+/* Initially hide the active users list on mobile devices */
+@media screen and (max-width: 400px) {
+    #active_users_list {
+        display: hidden;
+    }
+
+    
+
+}
+
+#active_users_list {
+    overflow: hidden;
+    max-height: 0;
+    padding: 0;
+    transition: max-height 0.5s ease; /* Transition max-height changes */
+}
+
+/* Show the active users list when not hidden */
+#active_users_list:not(.hidden) {
+    max-height: 1000px; /* Adjust the maximum height as needed */
+    padding: 10px; /* Adjust padding as needed */
+}
+
+/* Apply animation to transition from hidden to visible */
+#active_users_list.hidden {
+    max-height: 0;
+    padding: 0;
+    transition: max-height 1s ease, padding 1s ease; /* Transition max-height and padding changes */
+}
+
+
+/* Add some styling to make the active users toggle clickable */
+#active_users_toggle {
+    cursor: pointer;
 }
 
 /* this is the message box and submit button form*/
@@ -128,7 +173,7 @@ border-bottom: 2px solid blue;
 /* makes sending message form, centre and margin from bottom*/
 #send_container{
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 80px;
 }
 
 

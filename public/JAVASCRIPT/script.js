@@ -9,7 +9,7 @@ const socket = io('http://localhost:5678', { transports : ['websocket'] });
 const message_form = document.getElementById('send_container')
 const message_container = document.getElementById('message_container')
 const message_input = document.getElementById('message_input_data')
-const active_users_container = document.getElementById('active_users_div')
+const active_users_container = document.getElementById('active_users_list')
 let num_of_messages = 0
 
 const user_name = prompt('Enter your username: ')
@@ -39,13 +39,7 @@ socket.on('user_disconnected', user_name => {
 
 socket.on('active_users', active_users_array => {
 
-    //removes every element after h2 in 'active_users_container'
-    var h2Element = active_users_container.querySelector("h2");
-    var childNodes = Array.from(h2Element.parentNode.childNodes);
-    var h2Index = childNodes.indexOf(h2Element);
-    for (var i = h2Index + 1; i < childNodes.length; i++) {
-        active_users_container.removeChild(childNodes[i]);
-    }
+    active_users_container.innerHTML = '';
 
     //adds all active users to screen
     for (let i = 0; i < active_users_array.length; i++) {
@@ -73,7 +67,7 @@ message_form.addEventListener('submit', e => {
 
 // adds username to active users div
 function add_user_to_active_users(username) {
-    const Element = document.createElement('div')
+    const Element = document.createElement('p')
     Element.innerText = username
     Element.id = username
 
@@ -110,4 +104,16 @@ function add_message_to_screen(message) {
 function auto_scroll() {
     const element = document.getElementById('message_container');
     element.scrollTop = element.scrollHeight;
+}
+
+const activeUsersDiv = document.getElementById('active_users_list');
+const activeUsersToggle = document.getElementById('active_users_toggle');
+
+// Toggle visibility of active users section when clicked
+activeUsersToggle.addEventListener('click', () => {
+    activeUsersDiv.classList.toggle('hidden');
+});
+
+if (window.innerWidth < 760) {
+    activeUsersDiv.classList.toggle('hidden');
 }
