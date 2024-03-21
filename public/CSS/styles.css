@@ -1,11 +1,21 @@
 
+
+footer {
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
 /* Start of index page*/
 
-body {
-    background-color: rgb(231, 170, 170);
-
+nav {
+    background-color: grey;
 }
+
+
 #main_welcome_div {
+        background-color: rgb(231, 170, 170);
+
     color: white;
     height: 800px;
     padding: 8vh;
@@ -42,6 +52,50 @@ body {
 
 /* End of index page*/
 
+/* Start of About page*/
+
+body {
+    background-color: rgb(233, 233, 233);
+}
+#about_me_all_content_div {
+    border: 1px solid #e0e0e0; /* Border color */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    background-color: white;
+}
+
+
+#profile_image { 
+    width: 55%;
+}
+
+#about_me_info_div {
+   padding: 8vh;
+}
+
+#about_me_info_div p {
+  overflow: hidden;
+  padding: 10px;
+}
+
+#about_me_text_div {
+    padding: 8vh;
+    margin-top: -10vh;
+}
+
+#about_me_text_div span {
+border-bottom: 2px solid blue;
+}
+
+#skills_div {
+    padding: 8vh;
+    margin-top: -10vh;
+}
+
+#skills_div h5 {
+    margin-top: 20px;
+}
+/* End of About page*/
+
 /* start of chat page */
 
 .chat_message_div {
@@ -68,3 +122,5 @@ body {
 
 
 /* end of of chat page */
+
+
