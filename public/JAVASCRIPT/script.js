@@ -15,7 +15,7 @@ let num_of_messages = 0
 const user_name = prompt('Enter your username: ')
 socket.emit('new_user', user_name)
 add_message_to_screen('You connected')
-add_user_to_active_users(`${user_name} (YOU)`)
+
 
 //when recieve chat message
 socket.on('chat_message', data => {
@@ -28,14 +28,29 @@ socket.on('chat_message', data => {
 socket.on('user_connected', user_name => {
     // using `` allows for f-strings like python
    add_message_to_screen(`${user_name} connected`)
-   add_user_to_active_users(user_name)
+   
 })
 
 socket.on('user_disconnected', user_name => {
     // using `` allows for f-strings like python
    add_message_to_screen(`${user_name} disconnected`)
-   remove_user_from_active_users(user_name)
+   //remove_user_from_active_users(user_name)
 })
+
+socket.on('active_users', active_users_array => {
+    console.log(active_users_array);
+    var h2Element = active_users_container.querySelector("h2");
+    var childNodes = Array.from(h2Element.parentNode.childNodes);
+    var h2Index = childNodes.indexOf(h2Element);
+    for (var i = h2Index + 1; i < childNodes.length; i++) {
+        active_users_container.removeChild(childNodes[i]);
+    }
+
+    for (let i = 0; i < active_users_array.length; i++) {
+        add_user_to_active_users(active_users_array[i])
+    }
+})
+
 
 //run when submit button clicked
 message_form.addEventListener('submit', e => {
@@ -62,6 +77,7 @@ function add_user_to_active_users(username) {
 
     active_users_container.append(Element)
 }
+
 // adds removes username from active users div
 function remove_user_from_active_users(username) {
     const elementToRemove = document.getElementById(username);

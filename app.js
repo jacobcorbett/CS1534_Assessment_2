@@ -5,6 +5,7 @@ const Chat = require('./models/chat')
 const User = require('./models/user')
 const io = require('socket.io')(5678) //starts socket on port 5678
 const users = {}
+let active_user_list = []
 
 //express app
 const app = express();
@@ -72,6 +73,7 @@ app.use(morgan('dev'));
 
 //testing socket
 io.on('connection', socket => {
+   
 
     //when socket recives 'new_user'
     socket.on('new_user', user_name =>{
@@ -83,6 +85,10 @@ io.on('connection', socket => {
         //add username to array
         users[socket.id] = user_name
         socket.broadcast.emit('user_connected', user_name);
+        
+        active_user_list.push(user_name);
+        io.emit('active_users', active_user_list)
+        console.log(active_user_list)
         
     })
 
@@ -98,10 +104,16 @@ io.on('connection', socket => {
     //when socket recives 'disconnect'
     socket.on('disconnect', () => {
         console.log('user disconnected:', users[socket.id])
-        socket.broadcast.emit('user_disconnected', users[socket.id]);
+        socket.emit('user_disconnected', users[socket.id]);
         
+        //removes user from array
+        const index = active_user_list.indexOf(users[socket.id]);
+        active_user_list.splice(index, 1)
+        io.emit('active_users', active_user_list)
+        console.log(active_user_list)
+
         // remove user from array when user leaves
-        delete users[socket.io]
+        delete users[socket.io];
     })
 
 })
