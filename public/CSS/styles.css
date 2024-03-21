@@ -22,15 +22,27 @@ nav {
 }
 
 .main_welcome_div h1 {
-    font-size: 8vw;
+    font-size: 6vw;
     font-weight: 600;
     animation: raiseUp 0.75s;
 }
 .main_welcome_div h3 {
-    font-size: 3vw;
+    font-size: 2vw;
     font-weight: 600;
     animation: raiseUp 0.75s 1s both; /* starts animation after 1.5s */ 
 }
+
+/* Adjust the font size for mobile screens */
+@media screen and (max-width: 500px) {
+    .main_welcome_div h1 {
+        font-size: 15vw; 
+    }
+    .main_welcome_div h3 {
+        font-size: 6vw;
+    }
+}
+
+
 
 
 @keyframes raiseUp {

@@ -38,7 +38,8 @@ socket.on('user_disconnected', user_name => {
 })
 
 socket.on('active_users', active_users_array => {
-    console.log(active_users_array);
+
+    //removes every element after h2 in 'active_users_container'
     var h2Element = active_users_container.querySelector("h2");
     var childNodes = Array.from(h2Element.parentNode.childNodes);
     var h2Index = childNodes.indexOf(h2Element);
@@ -46,6 +47,7 @@ socket.on('active_users', active_users_array => {
         active_users_container.removeChild(childNodes[i]);
     }
 
+    //adds all active users to screen
     for (let i = 0; i < active_users_array.length; i++) {
         add_user_to_active_users(active_users_array[i])
     }
