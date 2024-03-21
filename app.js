@@ -18,7 +18,8 @@ mongoose.connect(dbURI)
     .catch((err) => console.log(err));
 
 //start main website on port 80
-app.listen(80)
+const port = process.env.PORT || 80
+app.listen(port)
 
 // temp for adding data to database
 // const test1 = new User({
