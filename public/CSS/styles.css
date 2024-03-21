@@ -14,8 +14,7 @@ nav {
 
 
 #main_welcome_div {
-        background-color: rgb(231, 170, 170);
-
+    background-color: rgb(231, 170, 170);
     color: white;
     height: 800px;
     padding: 8vh;
@@ -124,3 +123,21 @@ border-bottom: 2px solid blue;
 /* end of of chat page */
 
 
+/* Start of 404 page*/
+#error_404_div {
+background-color: rgb(231, 170, 170);
+    color: white;
+    height: 800px;
+    padding: 8vh;
+    font-family: Poppins;
+}
+
+#error_404_div h1 {
+    font-size: 8vw;
+    font-weight: 600;
+    animation: raiseUp 0.75s;
+}
+#error_404_div span {
+color: rgb(181, 16, 16);
+}
+/* end of 404 page*/
