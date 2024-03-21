@@ -35,11 +35,7 @@ socket.on('user_disconnected', user_name => {
     // using `` allows for f-strings like python
    add_message_to_screen(`${user_name} disconnected`)
    remove_user_from_active_users(user_name)
-
-   
-
 })
-
 
 //run when submit button clicked
 message_form.addEventListener('submit', e => {

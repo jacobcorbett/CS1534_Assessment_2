@@ -1,11 +1,44 @@
 
 
+/* Start of index page*/
+#main_welcome_div {
+    background-color: lightcoral;
+    color: white;
+    height: 800px;
+    
+}
+#main_welcome_div h1 {
+    padding: 100px;
+    font-family: Poppins;
+    font-size: 8vw;
+    font-weight: 600;
+    animation: raiseUp 0.75s;
+}
+
+@keyframes raiseUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); 
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.raise-up {
+    opacity: 0; 
+}
+
+
+/* End of index page*/
+
+/* start of chat page */
+
 .chat_message_div {
     border-style: solid;
     margin-top: 10px;
 }
-
-/* start of chat page */
 #active_users_div {
     background-color: red;
 }
