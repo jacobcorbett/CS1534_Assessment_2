@@ -13,7 +13,7 @@ nav {
 }
 
 
-#main_welcome_div {
+.main_welcome_div {
     background-color: rgb(231, 170, 170);
     color: white;
     height: 800px;
@@ -21,12 +21,12 @@ nav {
     font-family: Poppins;
 }
 
-#main_welcome_div h1 {
+.main_welcome_div h1 {
     font-size: 8vw;
     font-weight: 600;
     animation: raiseUp 0.75s;
 }
-#main_welcome_div h3 {
+.main_welcome_div h3 {
     font-size: 3vw;
     font-weight: 600;
     animation: raiseUp 0.75s 1s both; /* starts animation after 1.5s */ 
@@ -124,20 +124,8 @@ border-bottom: 2px solid blue;
 
 
 /* Start of 404 page*/
-#error_404_div {
-background-color: rgb(231, 170, 170);
-    color: white;
-    height: 800px;
-    padding: 8vh;
-    font-family: Poppins;
-}
 
-#error_404_div h1 {
-    font-size: 8vw;
-    font-weight: 600;
-    animation: raiseUp 0.75s;
-}
-#error_404_div span {
+#error_span{
 color: rgb(181, 16, 16);
 }
 /* end of 404 page*/
