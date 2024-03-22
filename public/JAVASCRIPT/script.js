@@ -3,10 +3,10 @@
 // un comment for codio
 //const socket = io('https://strangeanimal-bakercave-5678.codio-box.uk/', { transports : ['websocket'] });
 //const socket = io('http://159.65.214.76:5678', { transports : ['websocket'] });
-const socket = io('https://portfolio-website1-da4080e6c25f.herokuapp.com/', { transports : ['websocket'] });
+//const socket = io('https://portfolio-website1-da4080e6c25f.herokuapp.com/', { transports : ['websocket'] });
 
 
-//const socket = io('http://localhost:5678', { transports : ['websocket'] });
+const socket = io();
 const message_form = document.getElementById('send_container')
 const message_container = document.getElementById('message_container')
 const message_input = document.getElementById('message_input_data')

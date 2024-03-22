@@ -3,12 +3,18 @@ const morgan = require('morgan');
 const mongoose = require('mongoose')
 const Chat = require('./models/chat')
 const User = require('./models/user')
-const io = require('socket.io')(5678) //starts socket on port 5678
+//const io = require('socket.io')
+//const io = require('socket.io') //starts socket on port 5678
+
 const users = {}
 let active_user_list = []
 
 //express app
 const app = express();
+const server = require('http').createServer(app);
+const options = { /* ... */ };
+const io = require('socket.io')(server, options);
+
 
 //connect to database
 // if connection successful run app on port 3000
@@ -20,7 +26,7 @@ mongoose.connect(dbURI)
 
 //start main website on port 80
 const port = process.env.PORT || 80
-app.listen(port)
+server.listen(port)
 
 // temp for adding data to database
 // const test1 = new User({
