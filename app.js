@@ -12,8 +12,7 @@ let active_user_list = []
 //express app
 const app = express();
 const server = require('http').createServer(app);
-const options = { /* ... */ };
-const io = require('socket.io')(server, options);
+const io = require('socket.io')(server);
 
 
 //connect to database

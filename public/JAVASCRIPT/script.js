@@ -27,6 +27,7 @@ socket.on('chat_message', data => {
 
 //when new user joins chat message
 socket.on('user_connected', user_name => {
+    console.log('CON')
     // using `` allows for f-strings like python
    add_message_to_screen(`${user_name} connected`)
    
@@ -34,7 +35,8 @@ socket.on('user_connected', user_name => {
 
 socket.on('user_disconnected', user_name => {
     // using `` allows for f-strings like python
-   add_message_to_screen(`${user_name} disconnected`)
+    console.log('DIS')
+    add_message_to_screen(`${user_name} disconnected`)
    //remove_user_from_active_users(user_name)
 })
 
