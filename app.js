@@ -108,8 +108,9 @@ io.on('connection', socket => {
 
     //when socket recives 'disconnect'
     socket.on('disconnect', () => {
-        console.log('user disconnected:', users[socket.id])
-        socket.emit('user_disconnected', users[socket.id]);
+        
+        console.log('user disconnected:', users[socket.id]);
+        socket.broadcast.emit('user_disconnected', users[socket.id]);
         
         //removes user from array
         const index = active_user_list.indexOf(users[socket.id]);

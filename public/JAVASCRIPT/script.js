@@ -33,9 +33,9 @@ socket.on('user_connected', user_name => {
    
 })
 
+
 socket.on('user_disconnected', user_name => {
     // using `` allows for f-strings like python
-    console.log('DIS')
     add_message_to_screen(`${user_name} disconnected`)
    //remove_user_from_active_users(user_name)
 })
