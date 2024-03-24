@@ -49,8 +49,25 @@ socket.on('active_users', active_users_array => {
         add_user_to_active_users(active_users_array[i])
     }
 })
+
 socket.on('typing_users', typing_users_list => {
-    console.log(typing_users_list)
+    var n_users_typing = typing_users_list.length
+
+    if (n_users_typing == 1) {
+        document.getElementById("users_typing_output").innerHTML = `${typing_users_list[0]} typing...`;
+    }
+    else if (n_users_typing == 2){
+        document.getElementById("users_typing_output").innerHTML = `${typing_users_list[0]}, ${typing_users_list[1]} typing...`;
+    }
+    else if (n_users_typing == 3){
+        document.getElementById("users_typing_output").innerHTML = `${typing_users_list[0]}, ${typing_users_list[1]}, ${typing_users_list[2]} typing...`;
+    } 
+    else if (n_users_typing > 3){
+        document.getElementById("users_typing_output").innerHTML = `${n_users_typing} users typing...`;
+
+    } else {
+                document.getElementById("users_typing_output").innerHTML = ``;
+    }
 })
 
 //run when submit button clicked

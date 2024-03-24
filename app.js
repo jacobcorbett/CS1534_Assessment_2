@@ -124,12 +124,16 @@ io.on('connection', socket => {
         if (!typing_user_list.includes(user_name)) {
              typing_user_list.push(user_name);
         }
-        io.emit('typing_users', typing_user_list)
-        
     })
 
 
 })
+
+//function for checking if user typing, every 1s
+setInterval(check_typing,1000);
+function check_typing() {
+    io.emit('typing_users', typing_user_list)
+}
 
 // if user attempts to go to root page, render index page
 app.get('/', (req, res) => {
