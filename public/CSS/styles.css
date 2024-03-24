@@ -76,6 +76,22 @@ nav {
 
 /* End of index page*/
 
+/* Start of portfolio page*/
+.main_portfolio_div {
+    background-color: rgb(231, 170, 170);
+    color: white;
+    height: 800px;
+    padding: 8vh;
+    font-family: Poppins;
+    display: flex;
+    flex-direction: column;
+    height: 2000px;
+}
+
+
+/* End of portfolio page*/
+
+
 /* Start of About page*/
 
 body {

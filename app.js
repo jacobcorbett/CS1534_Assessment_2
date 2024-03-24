@@ -140,6 +140,27 @@ app.get('/', (req, res) => {
     res.render('index', {title: 'Home'})
 })
 
+// if user attempts to go to portfolio page, render portfolio page
+app.get('/projects', (req, res) => {
+    res.render('projects', {title: 'Projects'})
+})
+
+// if user going to portfolio/something go to it
+app.get('/portfolio/:id', (req, res) => {
+    const id = req.params.id;
+
+    //if page doesnt excsit send to 404 page
+    res.render(`projects/${id}`, {title: 'scalloway website'}, (err, html) =>{
+        if (err) {
+            res.status(404).render('404', {title: 'ERROR 404'})
+            return;
+        }
+        res.send(html)
+    })
+})
+
+
+
 // if user attempts to go to about page, render about page
 app.get('/about', (req, res) => {
     res.render('about', {title: 'About'})
