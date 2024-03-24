@@ -27,18 +27,6 @@ mongoose.connect(dbURI)
 const port = process.env.PORT || 80
 server.listen(port)
 
-// temp for adding data to database
-// const test1 = new User({
-//   user_name: 'poppy',
-// })
-// test1.save()  
-
-// const test = new Chat({
-//   chat: 'poppy',
-//   body: 'poop'
-// })
-// test.save()  
-
 function add_user_name_to_database(user_name) {
 const new_user_test = new User({
              user_name: user_name,
@@ -124,14 +112,9 @@ io.on('connection', socket => {
 
 })
 
-
-
-
-
 // if user attempts to go to root page, render index page
 app.get('/', (req, res) => {
     res.render('index', {title: 'Home'})
-    
 })
 
 // if user attempts to go to about page, render about page
@@ -142,14 +125,6 @@ app.get('/about', (req, res) => {
 // if user attempts to go to chat page, render chat page
 app.get('/chat', (req, res) => {
     res.render('chat', {title: 'chat'})
-    // Chat.find()
-    // .then((result) => {
-    //     res.render('chat' , {title: 'All Blogs', chats: result})
-    // })
-    // .catch((err) => {
-    //     console.log(err);
-    // })
-    
 })
 
 // 404 page, only runs if none of the other functions run
