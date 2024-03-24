@@ -49,7 +49,9 @@ socket.on('active_users', active_users_array => {
         add_user_to_active_users(active_users_array[i])
     }
 })
-
+socket.on('typing_users', typing_users_list => {
+    console.log(typing_users_list)
+})
 
 //run when submit button clicked
 message_form.addEventListener('submit', e => {
@@ -119,4 +121,18 @@ activeUsersToggle.addEventListener('click', () => {
 
 if (window.innerWidth < 760) {
     activeUsersDiv.classList.toggle('hidden');
+}
+
+
+//function for checking if user typing, every 1s
+setInterval(check_typing,1000);
+
+function check_typing() {
+    const message = message_input.value
+    if (message != ''){
+        socket.emit('typing', user_name)
+    } else {
+        socket.emit('not_typing', user_name)
+    }
+    
 }

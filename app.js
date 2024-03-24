@@ -8,6 +8,7 @@ const User = require('./models/user')
 
 const users = {}
 let active_user_list = []
+let typing_user_list = []
 
 //express app
 const app = express();
@@ -109,6 +110,24 @@ io.on('connection', socket => {
         // remove user from array when user leaves
         delete users[socket.io];
     })
+
+    socket.on('not_typing', user_name => {
+        if (typing_user_list.includes(user_name)) {
+            const index = typing_user_list.indexOf(user_name);
+            typing_user_list.splice(index, 1)
+        }
+        
+    })
+
+    socket.on('typing', user_name => {
+        console.log(`typing: ${user_name}`)
+        if (!typing_user_list.includes(user_name)) {
+             typing_user_list.push(user_name);
+        }
+        io.emit('typing_users', typing_user_list)
+        
+    })
+
 
 })
 

@@ -23,5 +23,7 @@
 
 - added active users div, which was easy for when users join because im already displaying that in the main chat area, its easy to also add it to the active users div. now on the other hand removing users i thought would be a pain i tired making unique id's but then after further testing it works even if there are two divs with the same id as it only removes one of them when a user leaves.
 
+- made the active users hidden when on moblie, but you can click if you want it to be shown to you
 
+- 
 
