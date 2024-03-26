@@ -7,9 +7,17 @@ IMPORTANT INFO:
 - Looking for CSS? in public/CSS all style sheets are in there.
 
 
-development approach
-challenges
+Development Approach
+---
+
+- firstly before starting this project, i thought i would be a good idea to get a grasp of Node.js and how it all works. I ended up watching this youtube series which drastically helped my understanding. https://www.youtube.com/playlist list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU
+- 
+
+Challenges
+---
+
 technical details of the chat's client-server communication
+---
 
 
 
