@@ -136,7 +136,7 @@ activeUsersToggle.addEventListener('click', () => {
     activeUsersDiv.classList.toggle('hidden');
 });
 
-if (window.innerWidth < 760) {
+if (window.innerWidth < 1000) {
     activeUsersDiv.classList.toggle('hidden');
 }
 
@@ -152,4 +152,13 @@ function check_typing() {
         socket.emit('not_typing', user_name)
     }
     
+}
+
+// Check if the screen width is below 100px 
+// then show alert so you know why active users not showing
+if (window.innerWidth < 1000) {
+    var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), { 
+    keyboard: false 
+    }) 
+    myModal.show() 
 }

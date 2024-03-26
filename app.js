@@ -146,7 +146,8 @@ app.get('/projects', (req, res) => {
 })
 
 // if user going to portfolio/something go to it
-app.get('/portfolio/:id', (req, res) => {
+// not used but in case want to use later for more info on projects
+app.get('/projects/:id', (req, res) => {
     const id = req.params.id;
 
     //if page doesnt excsit send to 404 page

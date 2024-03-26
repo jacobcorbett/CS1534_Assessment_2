@@ -21,7 +21,7 @@ nav {
     font-family: Poppins;
     display: flex;
     flex-direction: column;
-    height: 2000px;
+    height: 100%;
     
 }
 
@@ -88,6 +88,9 @@ nav {
     height: 100%;
 }
 
+.main_portfolio_div span {
+    border-bottom: 2px solid blue;
+}
 
 /* End of portfolio page*/
 
@@ -173,9 +176,6 @@ border-bottom: 2px solid blue;
     #active_users_list {
         display: hidden;
     }
-
-    
-
 }
 
 #active_users_list {

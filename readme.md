@@ -1,4 +1,20 @@
+Name: Jacob Corbett
+Student ID: 52316427
+Github Link: https://github.com/mightymander/CS1534_Assessment_2
 
+IMPORTANT INFO:
+- Looking for HTML5? in views folder, you will see filename.ejs these are all the html files.
+- Looking for CSS? in public/CSS all style sheets are in there.
+
+
+development approach
+challenges
+technical details of the chat's client-server communication
+
+
+
+
+===========
 15/3/24 - before starting this project i thought i would be a good idea to get a small grasp on how node worked so i watched this tutorial, link: https://www.youtube.com/playlist?list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU
 
 17/3/24 
