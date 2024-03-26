@@ -149,9 +149,10 @@ border-bottom: 2px solid blue;
 }
 
 .chat_message_div {
-    border-style: solid;
-    margin-top: 10px;
-   
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    margin-top: 5px;
+    padding: 5px;
+
 }
 #active_users_div {
     border-right: solid;
