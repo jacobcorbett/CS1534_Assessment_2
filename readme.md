@@ -1,5 +1,7 @@
 Name: Jacob Corbett
+
 Student ID: 52316427
+
 Github Link: https://github.com/mightymander/CS1534_Assessment_2
 
 IMPORTANT INFO:
