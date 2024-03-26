@@ -13,10 +13,16 @@ Development Approach
 ---
 
 - firstly before starting this project, i thought i would be a good idea to get a grasp of Node.js and how it all works. I ended up watching this youtube series which drastically helped my understanding. https://www.youtube.com/playlist list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU
+- Then i created a basic plan for myself on a piece of paper, including how many pages i wanted, and what each page needed to accomplish.
+-  After that i felt confident to start the basics of the project, so i set up the basic layout for the project, views, public folders.
+- I made sure to utilize partials partials which allowed me to make the navbar for example once and then put it on all the other pages. and if a change needed to be made it was quick and simple, and all the pages would get updated at instantly.
+- initially before looking at the sample code which utilized sockets to send and receive information my plan was to use databases, specifically mongodb. although after some time spent on this i realized that sockets where the way to go and scraped using a database for the main component of the project, I still utilize mongodb to save each user and any chats sent but that was more for the learning experience of how to use mongodb. I used the mongoose package to interact with the database.
 - 
 
 Challenges
 ---
+- When creating the chat page, the page layout on desktop was very easy with long horizontal space i could have the list of active users on the left but on mobile this is not as easy. I was initially stuck on how to approach this, maybe just hide the active users? I ended up deciding that i would hide all the active users and only leave the title and if they clicked the title it would revel the list of active users.
+- regarding the active users on mobile, this is a great plan however if you are unaware of the functionality of the button then you would just assume that the active users does not work on mobile so i implemented a bootstrap modal which is a fancy popup which lets you know if you are on mobile the functionality of the button. This gets ride of any possible confusion.
 
 technical details of the chat's client-server communication
 ---
