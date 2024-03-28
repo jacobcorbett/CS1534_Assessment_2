@@ -34,6 +34,7 @@ Challenges
 - 
 
 technical details of the chat's client-server communication
+---
 - At first glance the challenge of creating a chat page seems daunting but its much more simple that you think. if you think of it like when the client says something they send it to the server and then the server sends it to everyone else, thats it, its that simple. and with that basic knowledge you can do anything in relation to this task
 - so when the server boots up it creates the socket server, and simple starts listening for certain tasks, when the server receives 'new_user' it adds that to database and also to two different arrays and then sends to all clients the current active users array so all the clients have the updated list of people online, which allows for the active users to be displayed on the clients.
 - when the client first opens chat page, it gets there username from them and then as stated above it emits it under 'new_user'
