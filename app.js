@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+require('dotenv').config();
 const Chat = require("./models/chat");
 const User = require("./models/user");
 //const io = require('socket.io')
@@ -17,8 +18,7 @@ const io = require("socket.io")(server);
 
 //connect to database
 // if connection successful run app on port 3000
-const dbURI =
-  "mongodb+srv://mightymander:tNiaZ3th0YjzJuW4@chatdb.blkcylv.mongodb.net/development_database?retryWrites=true&w=majority&appName=chatDB";
+const dbURI = process.env.MONGO_URI;
 console.log("Attempting Connection to db...");
 mongoose
   .connect(dbURI)
