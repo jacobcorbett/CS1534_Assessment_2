@@ -2,9 +2,9 @@ Name: Jacob Corbett
 
 Student ID: 52316427
 
-Website Live at: https://jacobcorbett.uk
+Website Live at: 
 
-Github Link: https://github.com/mightymander/CS1534_Assessment_2
+Github Link: https://github.com/jacobcorbett/CS1534_Assessment_2
 
 IMPORTANT INFO:
 
